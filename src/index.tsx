@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
+import './blueprint.scss'
 import { App } from './app';
 import reportWebVitals from './report-web-vitals';
 
