@@ -1,0 +1,13 @@
+$border-width: 1px;
+
+@mixin header-border {
+  border: $border-width solid #D0D0D0;
+  box-sizing: border-box;
+}
+
+@mixin header-item-border-fix {
+  height: calc(100% + 2 * $border-width);
+  margin-top: -$border-width;
+  margin-left: -$border-width;
+}
+  
