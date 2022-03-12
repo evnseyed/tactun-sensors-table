@@ -1,0 +1,16 @@
+@import '../../app.mixins.scss';
+@import '../header.mixins.scss';
+
+.header-home-button {
+  @include disable-default-button-styles;
+  @include header-border;
+  @include header-item-border-fix;
+
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
