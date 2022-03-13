@@ -1,0 +1,19 @@
+@import '../../app.mixins.scss';
+
+.header-account-icon {
+  @include disable-default-button-styles;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+  }
+}
