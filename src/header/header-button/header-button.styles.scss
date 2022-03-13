@@ -1,5 +1,6 @@
 @import '../../app.mixins.scss';
 @import '../header.mixins.scss';
+@import '../../colors.scss';
 
 .header-button {
   @include disable-default-button-styles;
@@ -9,6 +10,8 @@
   padding: 0px 32px;
   display: flex;
   align-items: center;
+  color: $menuBackground;
+  
   &:hover {
     cursor: pointer;
   }
