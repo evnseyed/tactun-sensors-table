@@ -1,3 +1,9 @@
+@import './variables.scss';
+
 .app {
+  &__container {
+    display: flex;
+    height: calc(100% - $headerHeight);
+  }
 
 }

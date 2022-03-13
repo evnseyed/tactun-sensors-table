@@ -1,5 +1,12 @@
 @import './colors.scss';
 
+html,
+body,
+#root,
+.app {
+  height: 100%;
+}
+
 body {
   color: $menuBackground;
   margin: 0;
