@@ -1,0 +1,15 @@
+@import '../colors.scss';
+
+.bp3-breadcrumbs > li::after {
+  background: none;
+  content: "/";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bp3-breadcrumb {
+  color: $menuBackground;
+  font-size: 18px;
+  font-weight: 400;
+}
