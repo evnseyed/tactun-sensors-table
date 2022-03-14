@@ -4,6 +4,7 @@
   &__container {
     display: flex;
     height: calc(100% - $headerHeight);
+    background-color: #e5e5e5;
   }
 
 }
