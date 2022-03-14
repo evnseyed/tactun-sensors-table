@@ -7,4 +7,16 @@
     background-color: #e5e5e5;
   }
 
+  &__main {
+    margin-left: 56px;
+    max-width: 1776px;
+  }
+
+  &__breadcrumbs {
+    margin-top: 56px;
+  }
+
+  &__title {
+    margin-top: 24px;
+  }
 }
