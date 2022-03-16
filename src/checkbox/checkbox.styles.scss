@@ -1,0 +1,33 @@
+@import '../colors.scss';
+
+$checkbox-width: 24px;
+
+@mixin checkbox-size {
+  width: $checkbox-width;
+  height: $checkbox-width;
+}
+
+.bp3-control.bp3-checkbox.checkbox {
+  padding: 0px;
+  margin: 0px;
+  
+  input:checked ~ {
+    .bp3-control-indicator {
+      border: none;
+      background-color: $blue;
+
+      &::before {
+        @include checkbox-size;
+      }
+    }
+  }
+
+  .bp3-control-indicator {
+    @include checkbox-size;
+    box-sizing: border-box;
+    border: 2px solid #737373;
+    border-radius: 2px;
+    box-shadow: none; 
+    margin: 0px;
+  }
+}
