@@ -1,0 +1,44 @@
+@import '../../colors.scss';
+@import '../../variables.scss';
+
+.bp#{$blueprint-version}-control.#{$blueprint-version}-switch {
+  margin: 0px;
+  width: 64px;
+  height: 32px;
+
+  &:not(.#{$blueprint-version}-align-right) {
+    padding-left: 0px;
+
+    .#{$blueprint-version}-control-indicator {
+      margin-left: 0px;
+    }
+  }
+
+  .#{$blueprint-version}-control-indicator  {
+    width: 64px;
+    height: 32px;
+    margin: 0px;
+
+    &::before{
+     box-shadow: none;
+     width: 28px;
+     height: 28px;
+    }
+  }
+
+  input:checked {
+    ~ .#{$blueprint-version}-control-indicator  {
+      background-color: rgba($green, 0.3);
+
+      &:hover {
+        background-color: rgba($green, 0.3);
+      }
+
+       &::before{
+        background-color: $green;
+        box-shadow: none;
+        left: calc(100% - 28px - 2px * 2);
+       }
+     }
+   }
+}
