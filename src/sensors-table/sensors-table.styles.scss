@@ -42,6 +42,10 @@
   box-shadow: none;
   border-bottom: 1px solid #D0D0D0;
   padding: 0px;
+  
+  &_selected {
+    background-color: $selected-row;
+  }
 
   &_centered {
     justify-content: center;
