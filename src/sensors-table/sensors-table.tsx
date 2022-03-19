@@ -5,8 +5,8 @@ import './sensors-table.styles.scss';
 
 import { Cell, Column, ColumnHeaderCell, SelectionModes, Table2 as Table } from '@blueprintjs/table';
 
-import { Checkbox } from '../checkbox/checkbox';
-import type { CheckboxProps } from '../checkbox/checkbox';
+import { Checkbox } from '../ui/checkbox/checkbox';
+import type { CheckboxProps } from '../ui/checkbox/checkbox';
 import { Switch } from '../ui/switch/switch';
 
 
