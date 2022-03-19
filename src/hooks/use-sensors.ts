@@ -4,7 +4,7 @@ import { Sensor, SensorType, TemperatureUnit } from "../types"
 const sensors: Sensor[] = [
   {
     number: '001',
-    name: 'Sensor name',
+    name: 'Red',
     type: SensorType.LVDT_BASED_DIS,
     limits: {
       min: -40,
@@ -18,7 +18,7 @@ const sensors: Sensor[] = [
   },
   {
     number: '002',
-    name: 'Sensor name',
+    name: 'Blue',
     type: SensorType.LVDT_BASED_DIS,
     limits: {
       min: -40,
@@ -32,7 +32,7 @@ const sensors: Sensor[] = [
   },
   {
     number: '003',
-    name: 'Sensor name',
+    name: 'Green',
     type: SensorType.TEMPERATURE_SENSOR,
     limits: {
       min: -60,
