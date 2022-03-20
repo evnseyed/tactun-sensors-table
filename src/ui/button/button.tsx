@@ -5,7 +5,7 @@ import { Button as BlueprintjsButton, ButtonProps as BlueprintjsButtonProps } fr
 
 import './button.styles.scss';
 
-interface ButtonProps extends BlueprintjsButtonProps {
+export interface ButtonProps extends BlueprintjsButtonProps {
   text: string;
 }
 
