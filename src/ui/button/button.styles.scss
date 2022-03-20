@@ -1,0 +1,10 @@
+@import '../../variables.scss';
+@import '../ui.styles.scss';
+
+.bp#{$blueprint-version}-button {
+  @include button;
+
+  .bp#{$blueprint-version}-button-text {
+    @include button-text
+  }
+}
