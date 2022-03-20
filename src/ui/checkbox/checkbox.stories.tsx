@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Checkbox } from './checkbox';
 
 export default {
-  title: 'Checkbox',
+  title: 'UI/Checkbox',
   component: Checkbox,
   parameters: {
     // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
