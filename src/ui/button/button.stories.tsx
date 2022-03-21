@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Button } from './button';
+import { ArrowHollowDownIcon } from '../../icons';
 
 export default {
   title: 'UI/Button',
@@ -14,5 +15,13 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Example = Template.bind({});
-Example.args = { text: 'Group', onClick: () => { alert('Click!!!') } };
+export const Default = Template.bind({});
+Default.args = { text: 'Group', onClick: () => { alert('Click!!!') } };
+
+
+export const WithRightIcon = Template.bind({});
+WithRightIcon.args = {
+  text: 'More Actions',
+  onClick: () => { alert('Click!!!') },
+  rightIcon: <ArrowHollowDownIcon />
+};

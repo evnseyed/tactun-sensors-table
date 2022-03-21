@@ -8,3 +8,11 @@
     @include button-text
   }
 }
+
+.button {
+  &__right-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+  }
+}
