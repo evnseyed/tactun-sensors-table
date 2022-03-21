@@ -6,7 +6,7 @@ import { ItemRenderer } from '@blueprintjs/select';
 import { MenuItem } from '@blueprintjs/core';
 
 export default {
-  title: 'Select',
+  title: 'UI/Select',
   component: Select,
   parameters: {
     // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

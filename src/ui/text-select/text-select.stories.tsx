@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TextSelect } from './text-select';
 
 export default {
-  title: 'TextSelect',
+  title: 'UI/TextSelect',
   component: TextSelect,
   parameters: {
     // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
