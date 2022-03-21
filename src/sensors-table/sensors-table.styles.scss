@@ -35,6 +35,12 @@
   }
 }
 
+.sensors-table {
+  &__counter-or-selected-menu {
+    margin-bottom: 33px;
+  }
+}
+
 .cell {
   display: flex;
   align-items: center;

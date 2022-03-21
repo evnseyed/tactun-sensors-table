@@ -14,6 +14,8 @@ import { BLueprintjsCollumnHeaderCellRenderer, Sensor } from '../types';
 import { useSensors } from '../hooks/use-sensors';
 import { getColumnHeaderCellRenderer } from './columns/get-column-cell-renderer';
 import { printUnit } from '../tools';
+import { SensorsTableCounter } from './sensors-table-counter/sensors-table-counter';
+import { SelectedMenu } from './selected-menu/selected-menu';
 
 interface SensorsMap {
   [key: Sensor['name']]: Sensor;
@@ -170,106 +172,132 @@ export const SensorsTable: VFC<SensorsTableProps> = ({}) => {
       cssClasses += ' cell_selected';
     }
     return cssClasses;
-  }
+  };
+
+  const selectedCounter = useMemo(() => {
+    let counter = 0;
+
+    for(let i = 0; i < sensorsTableOrder.length; i++) {
+      if(selectedMap[sensorsTableOrder[i]]) {
+        counter += 1;
+      }
+    }
+
+    return counter;
+  }, [selectedMap])
+
+  const selectedMenuOrCounter = useMemo(() => {
+    if(selectedCounter > 0) {
+      return <SelectedMenu selectedSensorsCount={selectedCounter} />
+    } else {
+      return <SensorsTableCounter count={sensorsTableOrder.length} />;
+    }
+  }, [selectedCounter, sensorsTableOrder.length]);
 
   return (
-    <Table
-      numRows={3}
-      enableRowHeader={false}
-      defaultRowHeight={80}
-      columnWidths={[
-        // Select column
-        24 * 3,
-        // Number
-        44 + 12,
-        // Name
-        81 + 95,
-        // Sensor type
-        75 + 180,
-        // Limits
-        36 + 162,
-        // Unit
-        26 + 124,
-        // Manufacturer
-        80 + 144,
-        // Serial Number
-        87 + 135,
-        // Inverse reading
-        90 + 124,
-        // Show raw data
-        90 + 70
-      ]}
-      enableColumnResizing={false}
-      selectionModes={SelectionModes.ROWS_AND_CELLS}
-      selectedRegionTransform={region => {
-        if(region.cols) {
-          return {
-            ...region,
-            cols: [0, 9]
+    <section>
+      <div className="sensors-table__counter-or-selected-menu">
+        {selectedMenuOrCounter}
+      </div>
+      
+      <Table
+        numRows={3}
+        enableRowHeader={false}
+        defaultRowHeight={80}
+        columnWidths={[
+          // Select column
+          24 * 3,
+          // Number
+          44 + 12,
+          // Name
+          81 + 95,
+          // Sensor type
+          75 + 180,
+          // Limits
+          36 + 162,
+          // Unit
+          26 + 124,
+          // Manufacturer
+          80 + 144,
+          // Serial Number
+          87 + 135,
+          // Inverse reading
+          90 + 124,
+          // Show raw data
+          90 + 70
+        ]}
+        enableColumnResizing={false}
+        selectionModes={SelectionModes.ROWS_AND_CELLS}
+        selectedRegionTransform={region => {
+          if(region.cols) {
+            return {
+              ...region,
+              cols: [0, 9]
+            }
+          } else {
+            return region;
           }
-        } else {
-          return region;
-        }
-      }}
-    >
-      <Column
-        columnHeaderCellRenderer={selectColumnHeaderCellRenderer}
-        cellRenderer={selectColumnCellRenderer}
-      />
+        }}
+      >
+        <Column
+          columnHeaderCellRenderer={selectColumnHeaderCellRenderer}
+          cellRenderer={selectColumnCellRenderer}
+        />
 
-      <Column
-        columnHeaderCellRenderer={getColumnHeaderCellRenderer('N')}
-        cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> { numberColumnData[rowIndex] } </Cell>}
-      />
+        <Column
+          columnHeaderCellRenderer={getColumnHeaderCellRenderer('N')}
+          cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> { numberColumnData[rowIndex] } </Cell>}
+        />
 
-      <Column
-        columnHeaderCellRenderer={getColumnHeaderCellRenderer('Sensor name')}
-        cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> { nameColumnData[rowIndex] } </Cell>}
-      />
+        <Column
+          columnHeaderCellRenderer={getColumnHeaderCellRenderer('Sensor name')}
+          cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> { nameColumnData[rowIndex] } </Cell>}
+        />
 
-      <Column
-        columnHeaderCellRenderer={getColumnHeaderCellRenderer('Sensor Type')}
-        cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> { typeColumnData[rowIndex] } </Cell>}
-      />
+        <Column
+          columnHeaderCellRenderer={getColumnHeaderCellRenderer('Sensor Type')}
+          cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> { typeColumnData[rowIndex] } </Cell>}
+        />
 
-      <Column
-        columnHeaderCellRenderer={getColumnHeaderCellRenderer('Limits')}
-        cellRenderer={rowIndex => {
-          const limits = limitsColumnData[rowIndex];
-          let limitsLabel = '';
+        <Column
+          columnHeaderCellRenderer={getColumnHeaderCellRenderer('Limits')}
+          cellRenderer={rowIndex => {
+            const limits = limitsColumnData[rowIndex];
+            let limitsLabel = '';
 
-          if(limits) {
-            const maxLimitPrefix = limits.max > 0 ? '+' : '';
-            limitsLabel = `${limits.min} - ${maxLimitPrefix + limits.max}`;
+            if(limits) {
+              const maxLimitPrefix = limits.max > 0 ? '+' : '';
+              limitsLabel = `${limits.min} - ${maxLimitPrefix + limits.max}`;
+            }
+            return <Cell className={getCellCssClasses(rowIndex)}> {limitsLabel} </Cell>}
           }
-          return <Cell className={getCellCssClasses(rowIndex)}> {limitsLabel} </Cell>}
-        }
-      />
+        />
 
-      <Column
-        columnHeaderCellRenderer={getColumnHeaderCellRenderer('Unit')}
-        cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> {printUnit(unitColumnData[rowIndex])} </Cell>}
-      />
+        <Column
+          columnHeaderCellRenderer={getColumnHeaderCellRenderer('Unit')}
+          cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> {printUnit(unitColumnData[rowIndex])} </Cell>}
+        />
 
-      <Column
-        columnHeaderCellRenderer={getColumnHeaderCellRenderer('Manufacturer')}
-        cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> {manufacturerColumnData[rowIndex]} </Cell>}
-      />
+        <Column
+          columnHeaderCellRenderer={getColumnHeaderCellRenderer('Manufacturer')}
+          cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> {manufacturerColumnData[rowIndex]} </Cell>}
+        />
 
-      <Column
-        columnHeaderCellRenderer={getColumnHeaderCellRenderer('Seria number')}
-        cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> {serialNumberColumnData[rowIndex]} </Cell>}
-      />
+        <Column
+          columnHeaderCellRenderer={getColumnHeaderCellRenderer('Seria number')}
+          cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> {serialNumberColumnData[rowIndex]} </Cell>}
+        />
 
-      <Column
-        columnHeaderCellRenderer={getColumnHeaderCellRenderer('Inverse reading')}
-        cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> <Switch value={isInverseReadingColumnData[rowIndex]} onChange={(newValue) => { }}></Switch> </Cell>}
-      />
+        <Column
+          columnHeaderCellRenderer={getColumnHeaderCellRenderer('Inverse reading')}
+          cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> <Switch value={isInverseReadingColumnData[rowIndex]} onChange={(newValue) => { }}></Switch> </Cell>}
+        />
 
-      <Column
-        columnHeaderCellRenderer={getColumnHeaderCellRenderer('Show raw data')}
-        cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> <Switch value={isShowRawDataColumnData[rowIndex]} onChange={(newValue) => { }}></Switch> </Cell>}
-      />
-    </Table>
+        <Column
+          columnHeaderCellRenderer={getColumnHeaderCellRenderer('Show raw data')}
+          cellRenderer={rowIndex => <Cell className={getCellCssClasses(rowIndex)}> <Switch value={isShowRawDataColumnData[rowIndex]} onChange={(newValue) => { }}></Switch> </Cell>}
+        />
+      </Table>
+    </section>
   );
 };

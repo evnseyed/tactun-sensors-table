@@ -11,14 +11,20 @@ export interface ButtonProps extends Omit<BlueprintjsButtonProps, 'rightIcon'> {
 }
 
 export const Button: VFC<ButtonProps> = ({ text, rightIcon, ...blueprintjsButtonProps }) => {
+  let maybeRightIcon = undefined;
+
+  if(rightIcon) {
+    maybeRightIcon = (
+      <div className="button__right-icon">
+        {rightIcon}
+      </div>
+    )
+  };
+
   return (
     <BlueprintjsButton
       {...blueprintjsButtonProps}
-      rightIcon={
-        <div className="button__right-icon">
-          {rightIcon}
-        </div>
-      }
+      rightIcon={maybeRightIcon}
     >
       { text }
     </BlueprintjsButton>
