@@ -1,1 +1,2 @@
-export { ArrowDownIcon } from './arrow-down-icon'
+export { ArrowDownIcon } from './arrow-down-icon';
+export { ArrowHollowDownIcon } from './arrow-hollow-down-icon'
