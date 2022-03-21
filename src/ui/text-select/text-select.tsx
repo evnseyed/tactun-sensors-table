@@ -4,11 +4,11 @@ import { Select, SelectProps } from '../select/select';
 import { ItemRenderer } from '@blueprintjs/select';
 import { MenuItem } from '@blueprintjs/core';
 
-interface TextItem {
+export interface TextItem {
   text: string,
 }
 
-interface TextSelectProps {
+export interface TextSelectProps {
   items: TextItem[],
   onSelect: (item: TextItem) => void,
   buttonProps: SelectProps<TextItem>['buttonProps'],
