@@ -1,0 +1,24 @@
+@import '../../colors.scss';
+@import '../../variables.scss';
+
+.selected-menu {
+  display: flex;
+  align-items: center;
+
+  &__counter {
+    color: $blue;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    margin-left: 34px;
+
+    .bp#{$blueprint-version}-button {
+      margin-right: 28px;
+    }
+  }
+}

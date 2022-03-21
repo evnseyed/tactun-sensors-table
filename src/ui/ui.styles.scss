@@ -1,0 +1,25 @@
+@import '../colors.scss';
+@import '../variables.scss';
+
+@mixin button {
+  border: 1px solid $listbox-lines;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  height: $button-height;
+
+  display: flex;
+  align-items: center;
+  padding: 0px 12px;
+
+  background-color: white !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+@mixin button-text {
+  color: $button-text !important;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 30px;
+}

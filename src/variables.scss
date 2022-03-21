@@ -1,1 +1,15 @@
+// We need single responsibility for blueprint version because it is needed
+// for easly update blueprint version.
+
+// For example blueprint css api provide to us next classes:
+// bp3-control for 3 version and bp4-control for 4.
+
+// So weneded use css api like example below:
+// .bp#{$blueprint-version}-control {}
+
+// Using variable unstead hardcode we don't need update all styles
+// when we moving to another version of blueprint
+
+$blueprint-version: 3;
 $headerHeight: 80px;
+$button-height: 48px;

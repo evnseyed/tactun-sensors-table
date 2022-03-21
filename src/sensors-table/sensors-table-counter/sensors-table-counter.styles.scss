@@ -1,0 +1,11 @@
+@import '../../colors.scss';
+@import '../../variables.scss';
+
+.sensors-table-counter {
+  color: $button-text;
+  font-weight: 400;
+  font-size: 20px;
+  height: $button-height;
+  display: flex;
+  align-items: center;
+}

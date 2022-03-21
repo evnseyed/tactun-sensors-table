@@ -1,0 +1,68 @@
+@import '../colors.scss';
+
+.bp3-table-column-headers {
+  background-color: #F9F9F9;
+}
+
+.bp3-table-header.bp3-table-column-header-cell {
+  line-height: 0px !important;
+  box-shadow: none !important;
+  color: $button-text;
+}
+
+.bp3-table-selection-enabled .bp3-table-cell {
+  cursor: pointer;
+}
+
+.bp3-table-resize-handle-target.bp3-table-resize-vertical {
+  width: 0px;
+}
+
+.bp3-table-quadrant.bp3-table-quadrant-top {
+  height: 48px !important;
+}
+
+.bp3-table-header.bp3-table-cell-col-0 .bp3-table-header-content  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 72px !important;
+}
+
+.bp3-table-header {
+  .bp3-table-column-name {
+    display: none;
+  }
+}
+
+.sensors-table {
+  &__counter-or-selected-menu {
+    margin-bottom: 33px;
+  }
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+
+  box-shadow: none;
+  border-bottom: 1px solid #D0D0D0;
+  padding: 0px;
+  
+  &_selected {
+    background-color: $selected-row;
+  }
+
+  &_centered {
+    justify-content: center;
+  }
+  // &::after {
+  //   content: 'div';
+  //   width: 100%;
+  // }
+  // box-shadow: inset 0 -1px 0 rgb(16 22 26 / 15%);
+}
+
+.column__header-sort-icon {
+  margin-left: 4px;
+}

@@ -1,0 +1,18 @@
+@import '../../variables.scss';
+@import '../ui.styles.scss';
+
+.bp#{$blueprint-version}-button {
+  @include button;
+
+  .bp#{$blueprint-version}-button-text {
+    @include button-text
+  }
+}
+
+.button {
+  &__right-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+  }
+}
