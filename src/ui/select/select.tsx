@@ -6,7 +6,7 @@ import './select.styles.scss';
 import { Button, ButtonProps } from '../button/button';
 import { ArrowHollowDownIcon } from '../../icons';
 
-interface SelectProps<T> {
+export interface SelectProps<T> {
   items: T[],
   itemRenderer: ItemRenderer<T>,
   onItemSelect: (item: T) => void,
